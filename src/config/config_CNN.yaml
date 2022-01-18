@@ -1,0 +1,21 @@
+### general stuff ###
+
+use_gpu: False
+command: "evaluate"
+save_path: "/models/mnist_classifier.pt" #given wrp to /src
+
+### config for training ###
+train:
+  hyperparameters:
+    lr: 0.004
+    epochs: 24
+    batch_size: 64
+  criterion: "NLLLoss" #must be named exactly as in torch.nn.
+  optimizer: "Adam"
+  save_path: ${save_path} 
+
+### config for Evaluation ###
+evaluate:
+  verbose: True
+  load_path: ${save_path}
+

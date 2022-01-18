@@ -1,0 +1,13 @@
+use_gpu: false
+command: evaluate
+save_path: /models/mnist_classifier.pt
+train:
+  hyperparameters:
+    lr: 0.004
+    epochs: 24
+    batch_size: 64
+  criterion: NLLLoss
+  save_path: /models/mnist_classifier.pt
+evaluate:
+  verbose: true
+  load_path: ${evaluate.save_path}

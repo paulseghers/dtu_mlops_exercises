@@ -1,0 +1,11 @@
+use_gpu: false
+command: train
+train:
+  hyperparameters:
+    lr: 0.1
+    epochs: 24
+    batch_size: 64
+  criterion: BCELoss
+  save_path: models/CNN_classifier.pt
+evaluate:
+  verbose: true
