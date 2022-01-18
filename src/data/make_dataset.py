@@ -12,9 +12,21 @@ def main(input_filepath, output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
+    print('expects corrupted mnist with train split over multiple files')
+    print('for obvious reasons I .gitignore these')
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    logger.info('making final data set from raw data in data/raw/corruptmnist')
 
+    fname = ["".join(("data/raw/corruptmnist/train_",str(i),".npz")) for i in range(5)]
+    processed_path = 'data/processed'
+
+
+    data_all = [np.load(fname) for fname in fname_list]
+
+    merged_data = {}
+    for data in data_all:
+        [merged_data.update({k: v}) for k, v in data.items()]
+    np.savez(processed_path + "train/train_merged.npz", **merged_data)
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

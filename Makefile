@@ -27,7 +27,14 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) src/data/load_mnist.py
+	$(info )
+	$(info [NOTE] data already cleaned if pulled from git)
+	$(info [NOTE] use `make initialdata` to created processed set from corrupted_mnist)
+
+## Make train
+train:
+	$(PYTHON_INTERPRETER) src/main.py command=train
 
 ## Delete all compiled Python files
 clean:
