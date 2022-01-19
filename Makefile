@@ -36,6 +36,9 @@ data: requirements
 train:
 	$(PYTHON_INTERPRETER) src/main.py command=train
 
+evaluate:
+	$(PYTHON_INTERPRETER) src/main.py command=evaluate
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete

@@ -1,5 +1,9 @@
+# does exactly the same as checkpoint_mgmt but with different import path 
+# to resolve import issues when importing these methods from tests/ dir
+# also doesn't print error messages as pytest handles those
+
 import torch
-from model import MyAwesomeModel, mnist_classifier
+from src.model import MyAwesomeModel, mnist_classifier
 
 def save_checkpoint(filepath, model):
     if isinstance(model, MyAwesomeModel):
@@ -25,10 +29,7 @@ def load_checkpoint(filepath):
             classes=checkpoint['classes'],
             dropout=checkpoint['dropout'])
     except KeyError:
-        print("error loading the attributes :/")
-        print("you're probably trying to load a CNN from a savefile of a Linear NN\n attempting to fix for you...\n")
         model = mnist_classifier()
     model = mnist_classifier()
     model.load_state_dict(checkpoint)#in this case its simply the state dict
-    print("loaded model successfully from {}".format(filepath))
     return model

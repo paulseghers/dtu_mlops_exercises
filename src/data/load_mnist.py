@@ -1,18 +1,7 @@
 import torch
 import numpy as np
 import os.path
-from torch.utils.data import DataLoader, TensorDataset
-import torchvision
-
-import glob
-import os
-from os.path import abspath, dirname
-from pathlib import Path
-
-import numpy as np
-import torch
-import torchvision
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import DataLoader
 
 
 def mnist(filepath, batch_size):
@@ -44,7 +33,6 @@ def mnist(filepath, batch_size):
 
     testloader = torch.utils.data.DataLoader(test_data, batch_size, shuffle=True)
 
-    print("testloadr type: ", testloader)
     return trainloader, testloader
 """
 def mnist():

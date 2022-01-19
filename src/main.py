@@ -1,10 +1,7 @@
-import argparse
-import sys
 import os
+import pytest
 
-import numpy as np
 import torch
-import matplotlib.pyplot as plt
 
 from data.load_mnist import mnist
 from model import MyAwesomeModel, mnist_classifier
@@ -15,11 +12,17 @@ from checkpoint_mgmt import load_checkpoint, save_checkpoint
 import hydra
 from hydra.utils import get_original_cwd
 import logging
-from omegaconf import OmegaConf
+
 
 log = logging.getLogger(__name__)
 
 def train(C):
+    """
+    input: config dictionary
+    output: void
+    train loop; can accept any torch.model, provided the
+    appropriate data and hyperparameters are given
+    """
     cfg =  C.train
     print("hyperparams: ", cfg.hyperparameters)
     print("workdir in train: ", os.getcwd(), "\n")
@@ -47,7 +50,6 @@ def train(C):
         running_loss = 0
         for images, labels in train_set:
             optimizer.zero_grad()
-
             log_ps = model(images.float())
             loss = criterion(log_ps, labels)
             loss.backward()
@@ -63,6 +65,12 @@ def train(C):
 
   
 def evaluate(C):
+    """
+    input: config dictionary
+    output: void
+    evaluation loop. loads model from saved path and 
+    evaluates performance on test set.
+    """
     cfg = C.evaluate
     log.info("Evaluating until hitting the ceiling")
     model = load_checkpoint(get_original_cwd()+cfg.load_path)
