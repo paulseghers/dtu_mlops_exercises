@@ -1,5 +1,6 @@
+steps:
 name: ‘gcr.io/cloud-builders/docker’
-args: [‘build’, ‘-t’, ‘gcr.io//', '.']
+args: [‘build’, ‘-t’, ‘gcr.io/dtumlops/dockers', '.']
 
 name: ‘gcr.io/cloud-builders/docker’
-args: [‘push’, ‘gcr.io//']
+args: [‘push’, ‘gcr.io/dtumlops/dockers']

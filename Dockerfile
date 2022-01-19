@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.7-slim
+FROM python:3.8-slim
 # install python 
 RUN apt update && \
 apt install --no-install-recommends -y build-essential gcc && \
@@ -10,7 +10,6 @@ COPY src/ src/
 COPY data/ data/
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
-ENTRYPOINT ["python", "-u", "src/models/main.py"]
-
+ENTRYPOINT ["python", "-u", "src/main.py"]
 
 
