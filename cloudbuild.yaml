@@ -1,6 +1,6 @@
 steps:
-  - name: ‘gcr.io/cloud-builders/docker’
-    args: [‘build’, ‘-t’, ‘gcr.io/dtumlops-337915/dockers', '.', '-f', 'Dockerfile']
-
-  - name: ‘gcr.io/cloud-builders/docker’
-    args: [‘push’, ‘gcr.io/dtumlops-337915/dockers']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_NAME/docker-buildrepo', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_NAME/docker-buildrepo']
+timeout: 1200s
