@@ -16,15 +16,15 @@ depending on the arguments in the config file [todo]
 
 if a model is saved in those locations, running the evaluation loop:
 
-```    make evaluate ```
-
-you can also perform a sanity check on data and model by running
-<br>
-```  pytest            ```<br>
-<br>
+    make evaluate  
 
 will evaluate this models accuracy.<br>
-Things like hyperparamters, save locations, can be modified in the file `src/config/config_CNN.yaml`
+Things like hyperparamters, save locations, can be modified in the file `src/config/config_CNN.yaml`<br>
+
+you can also perform a sanity check on data and model by running
+
+    pytest  
+
 
 ## Things I gone and done that work
 
@@ -41,10 +41,10 @@ Things like hyperparamters, save locations, can be modified in the file `src/con
 
 ## Things I tried but didn't succeed because of lack of time and/or skills :(
 
-- [] setting up cloud functions
-- [] inference
-- [] profiling
-- [] pytorch-lightning training loop
+- [ ] setting up cloud functions
+- [ ] inference
+- [ ] profiling
+- [ ] pytorch-lightning training loop
 
 
 Project Organization. Loosely based on cookie cutter structure, but I didn't respect it all the way
@@ -101,8 +101,6 @@ Project Organization. Loosely based on cookie cutter structure, but I didn't res
     ├──config              <- contains config file to load hyperparameters and other commands using hydra
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
-
 
 
 --------
