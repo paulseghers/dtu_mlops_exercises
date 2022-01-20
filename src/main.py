@@ -29,7 +29,7 @@ def train(C):
     log.info("Training homemade CNN classifier...")
 
     model = mnist_classifier()
-    train_set, _ = mnist(get_original_cwd()+'/data/raw', cfg.hyperparameters.batch_size) 
+    train_set, _ = mnist(get_original_cwd()+'/data/processed', cfg.hyperparameters.batch_size) 
     
     try:
         criterion = getattr(torch.nn, cfg.criterion)()
@@ -75,7 +75,7 @@ def evaluate(C):
     log.info("Evaluating until hitting the ceiling")
     model = load_checkpoint(get_original_cwd()+cfg.load_path)
     log.info("loaded model from: {} ...".format(get_original_cwd()+cfg.load_path))
-    _, test_loader = mnist(get_original_cwd()+'/data/raw', C.train.hyperparameters.batch_size)
+    _, test_loader = mnist(get_original_cwd()+'/data/processed', C.train.hyperparameters.batch_size)
     with torch.no_grad():
         model.eval()
         correct_preds, n_samples = 0, 0
